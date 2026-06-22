@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>乐球直播 · 观赛指引</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f2f4f6;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1e2b3a;
+      line-height: 1.7;
+      padding: 2.5rem 1.2rem;
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    /* 卡片风格 */
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e6eaef;
+      padding: 1.8rem 2rem;
+      margin-bottom: 1.8rem;
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    /* 标题区 */
+    .hero-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #0f1a2b;
+      margin-bottom: 0.3rem;
+      line-height: 1.2;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: #5d6e82;
+      margin-bottom: 0.2rem;
+      font-weight: 400;
+      border-left: 4px solid #3b82f6;
+      padding-left: 1rem;
+      background: #f8faff;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .divider {
+      height: 2px;
+      background: linear-gradient(to right, #dce3ec, transparent);
+      margin: 1.4rem 0 1.8rem 0;
+    }
+
+    /* 正文 */
+    .body-text {
+      margin-bottom: 1.2rem;
+      color: #2b3b4b;
+    }
+
+    .body-text strong {
+      color: #1a2a3b;
+      font-weight: 600;
+    }
+
+    .body-text a {
+      color: #1f5fcf;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(31, 95, 207, 0.25);
+      transition: border-color 0.15s;
+    }
+
+    .body-text a:hover {
+      border-bottom-color: #1f5fcf;
+    }
+
+    /* 引用提示框 */
+    .quote-box {
+      background: #f4f8fe;
+      border-left: 5px solid #3b82f6;
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      margin: 1.6rem 0 1.8rem 0;
+      font-style: normal;
+      color: #1b3a5c;
+      box-shadow: inset 0 0 0 1px rgba(59, 130, 246, 0.08);
+    }
+
+    .quote-box p {
+      margin-bottom: 0.3rem;
+    }
+
+    .quote-box .quote-label {
+      display: inline-block;
+      font-weight: 500;
+      font-size: 0.85rem;
+      color: #3b82f6;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+
+    /* 特点小标 */
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.2rem;
+      margin: 1rem 0 1.2rem 0;
+    }
+
+    .feature-item {
+      background: #f7f9fc;
+      border-radius: 30px;
+      padding: 0.25rem 1rem 0.25rem 1rem;
+      border: 1px solid #e4e9f0;
+      font-size: 0.95rem;
+      color: #1f3347;
+      display: inline-block;
+    }
+
+    .feature-item::before {
+      content: "·";
+      margin-right: 0.3rem;
+      color: #3b82f6;
+      font-weight: bold;
+    }
+
+    /* 访问句段落 */
+    .access-note {
+      background: #f8f9fc;
+      border-radius: 16px;
+      padding: 1.2rem 1.6rem;
+      border: 1px solid #e2e8f0;
+      margin: 1.6rem 0 0.8rem 0;
+    }
+
+    .access-note p {
+      margin-bottom: 0.3rem;
+    }
+
+    .faq-mini {
+      margin-top: 1.2rem;
+    }
+
+    .faq-mini details {
+      border-bottom: 1px solid #e6ecf3;
+      padding: 0.7rem 0;
+    }
+
+    .faq-mini details:last-of-type {
+      border-bottom: none;
+    }
+
+    .faq-mini summary {
+      font-weight: 500;
+      cursor: pointer;
+      color: #1f3850;
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .faq-mini summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-mini summary::before {
+      content: "▸";
+      margin-right: 0.5rem;
+      color: #3b82f6;
+      transition: transform 0.15s;
+    }
+
+    .faq-mini details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    .faq-mini .answer {
+      margin-top: 0.6rem;
+      padding-left: 1.5rem;
+      color: #3f5368;
+      font-size: 0.95rem;
+    }
+
+    /* 脚注 */
+    .footer-note {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #7a8a9b;
+      margin-top: 2.5rem;
+      border-top: 1px solid #d9e1ea;
+      padding-top: 1.8rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      body {
+        padding: 1.2rem 0.8rem;
+      }
+
+      .card {
+        padding: 1.3rem 1.2rem;
+      }
+
+      .hero-title {
+        font-size: 1.7rem;
+      }
+
+      .feature-grid {
+        gap: 0.5rem 0.8rem;
+      }
+
+      .feature-item {
+        font-size: 0.85rem;
+        padding: 0.15rem 0.8rem;
+      }
+
+      .quote-box {
+        padding: 1rem 1.2rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .hero-title {
+        font-size: 1.5rem;
+      }
+
+      .card {
+        padding: 1rem 0.9rem;
+      }
+
+      .access-note {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 主卡片：简洁博客式 -->
+    <div class="card">
+      <h1 class="hero-title">乐球直播 · 从观赛到识球</h1>
+      <div class="hero-sub">
+        一篇关于快速识别平台用途的简短笔记
+      </div>
+      <div class="divider"></div>
+
+      <p class="body-text">
+        每当打开一个新的体育直播网站，人们第一眼往往想知道：这里能看什么比赛？操作是否顺手？是否需要注册？<strong>乐球直播</strong> 在信息呈现上做了减法——首页直接陈列热门赛事与实时比分，省去多层菜单的干扰。这种设计思路适合那些希望“打开即用、一眼锁定场次”的用户。
+      </p>
+
+      <p class="body-text">
+        从导航结构来看，频道分类集中在足球、篮球、网球以及部分小众运动，没有过度铺开。对于只想快速找到某场中超或欧洲联赛的观众而言，这种克制反而降低了认知负担。同时页面采用深色与高对比度文字，弱化广告区域，让赛程预告处于视觉中心。
+      </p>
+
+      <!-- 引用提示 -->
+      <div class="quote-box">
+        <span class="quote-label">✦ 观察笔记</span>
+        <p>“一个直播平台的可用性，往往取决于用户能否在三秒内找到目标赛事。乐球直播的首页布局偏向信息优先，而非功能堆砌。”</p>
+      </div>
+
+      <p class="body-text">
+        首页还设有简易的筛选条：按日期、联赛、或进行中的直播状态过滤。相比一些平台需要跳转二级页面才能看到完整赛程，这里的操作路径更短。如果你经常在周末快速浏览多场同时开赛的场次，这种聚合视图会比较实用。
+      </p>
+
+      <div class="feature-grid">
+        <span class="feature-item">实时比分嵌入</span>
+        <span class="feature-item">多联赛并行展示</span>
+        <span class="feature-item">移动端适配</span>
+        <span class="feature-item">无强制注册</span>
+      </div>
+
+      <p class="body-text">
+        当然，每个直播站都有自己的内容侧重。如果你是资深球迷，可能会关心信号源稳定性与解说语言选项。从目前公开页面来看，<a href="https://webs-leqiuzhibo.com">乐球直播</a> 更偏向提供多线路切换，而非单一源绑定。这种灵活性在热门赛事期间尤其重要——当某条线路拥堵时，可尝试其他通道。
+      </p>
+
+      <!-- 访问句卡片内嵌 -->
+      <div class="access-note">
+        <p><strong>📍 快速访问</strong> · 如果你正在寻找一个界面简洁、赛程直观的直播入口，不妨将 <a href="https://webs-leqiuzhibo.com">乐球直播</a> 加入书签。首页即内容，无需层层点击。</p>
+      </div>
+
+      <!-- FAQ 摘要 (轻量) -->
+      <div class="faq-mini">
+        <details>
+          <summary>乐球直播 主要覆盖哪些赛事？</summary>
+          <div class="answer">以足球、篮球主流联赛为主，包括英超、西甲、意甲、NBA、CBA 等，同时涵盖网球大满贯及部分电竞项目。具体赛事列表会随赛季更新。</div>
+        </details>
+        <details>
+          <summary>是否需要安装专用播放器？</summary>
+          <div class="answer">不需要。页面基于 Web 播放器，主流浏览器（Chrome、Edge、Safari、Firefox）均可直接观看，无需额外插件或客户端。</div>
+        </details>
+        <details>
+          <summary>移动端浏览体验如何？</summary>
+          <div class="answer">页面采用响应式设计，在手机浏览器上会自动调整布局，赛程列表与比分模块保持可读性，横屏观看时画面适配更佳。</div>
+        </details>
+      </div>
+
+      <p class="body-text" style="margin-top: 1.2rem;">
+        总体而言，<strong>乐球直播</strong> 的首页设计围绕一个核心：让用户以最少步骤抵达直播内容。如果你习惯先看赛程再决定看哪场，这种直给的方式会比较契合。当然，实际体验仍取决于个人网络环境与偏好。
+      </p>
+    </div>
+
+    <!-- 脚注 -->
+    <div class="footer-note">
+      <span>内容仅为页面介绍，实际功能以 <a href="https://webs-leqiuzhibo.com">乐球直播</a> 为准 · 观赛愉快</span>
+    </div>
+  </div>
+</body>
+</html>
