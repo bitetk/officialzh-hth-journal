@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开云 · 日常查询与对照笔记</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #fbe9d2 0%, #f5d5b0 35%, #ebc49b 70%, #e0b48a 100%);
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            line-height: 1.7;
+            color: #2f2a24;
+        }
+        .card {
+            max-width: 840px;
+            width: 100%;
+            background: rgba(255, 252, 245, 0.92);
+            backdrop-filter: blur(3px);
+            border-radius: 40px 40px 32px 32px;
+            padding: 2.8rem 2.4rem;
+            box-shadow: 0 20px 40px rgba(140, 90, 50, 0.18), 0 8px 16px rgba(190, 130, 80, 0.08);
+            transition: box-shadow 0.25s ease;
+        }
+        .card:hover {
+            box-shadow: 0 28px 56px rgba(120, 75, 40, 0.22);
+        }
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #462f22;
+            margin-bottom: 0.3rem;
+            border-left: 6px solid #d6996a;
+            padding-left: 1rem;
+        }
+        .subhead {
+            font-size: 1.1rem;
+            color: #705944;
+            margin-bottom: 2.2rem;
+            border-bottom: 1px dashed #dbbea5;
+            padding-bottom: 0.65rem;
+        }
+        .meta-line {
+            display: inline-block;
+            background: #efe0d4;
+            padding: 0.2rem 1rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: #5b4534;
+            letter-spacing: 0.02em;
+            margin-bottom: 2rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 480;
+            color: #3f2d1f;
+            margin: 2rem 0 0.8rem 0;
+            position: relative;
+        }
+        h2::before {
+            content: "·";
+            color: #c98758;
+            font-weight: 600;
+            margin-right: 6px;
+        }
+        p {
+            margin: 1.1rem 0;
+            text-align: justify;
+            font-size: 1.05rem;
+            color: #3d332b;
+        }
+        .quote-tip {
+            background: #f4e7db;
+            padding: 1.2rem 1.8rem;
+            border-radius: 28px 12px 28px 12px;
+            margin: 2rem 0 1.6rem 0;
+            border-left: 4px solid #c98758;
+            font-size: 1.05rem;
+            color: #3a2d22;
+            box-shadow: inset 0 1px 4px rgba(160, 110, 70, 0.08);
+        }
+        .quote-tip strong {
+            color: #744f34;
+            font-weight: 580;
+        }
+        .link-btn {
+            display: inline-block;
+            background: #d6996a;
+            color: #fef9f2;
+            padding: 0.5rem 1.8rem;
+            border-radius: 60px;
+            font-weight: 460;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: background 0.25s, transform 0.15s;
+            box-shadow: 0 4px 8px rgba(160, 100, 60, 0.16);
+            letter-spacing: 0.3px;
+        }
+        .link-btn:hover {
+            background: #b87d50;
+            transform: scale(1.02);
+            box-shadow: 0 6px 14px rgba(150, 90, 50, 0.2);
+        }
+        .inline-link {
+            color: #8f623e;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #dbb296;
+            font-weight: 460;
+            transition: background 0.2s;
+            padding: 0 2px;
+            border-radius: 4px;
+        }
+        .inline-link:hover {
+            background: #eddaca;
+            color: #573e2c;
+        }
+        .faq-mini {
+            margin: 2.5rem 0 1rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.8rem;
+            padding: 1rem 0;
+            border-top: 1px solid #dfcfbe;
+            border-bottom: 1px solid #dfcfbe;
+        }
+        .faq-mini span {
+            font-size: 0.95rem;
+            color: #4b3c2f;
+            background: #f3e4d6;
+            padding: 0.2rem 1rem 0.2rem 1.2rem;
+            border-radius: 40px;
+            position: relative;
+        }
+        .faq-mini span::before {
+            content: "?";
+            color: #b87d50;
+            font-weight: 600;
+            margin-right: 6px;
+        }
+        .visit-sentence {
+            margin-top: 2.2rem;
+            padding: 1rem 0 0.2rem 0;
+            font-size: 1.1rem;
+            border-top: 1px solid #e5d3c2;
+            text-align: left;
+            color: #3f3127;
+        }
+        .visit-sentence a {
+            font-weight: 500;
+        }
+        .footer-note {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #6b5a4b;
+            text-align: center;
+            opacity: 0.7;
+        }
+        @media (max-width: 600px) {
+            .card {
+                padding: 2rem 1.2rem;
+                border-radius: 32px;
+            }
+            h1 {
+                font-size: 1.9rem;
+                padding-left: 0.8rem;
+            }
+            .subhead {
+                font-size: 1rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            .quote-tip {
+                padding: 1rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>开云 · 日常对照</h1>
+        <div class="subhead">查询、延伸与随手笔记</div>
+        <div class="meta-line">📖 从一次检索开始 · 种子 a007</div>
+
+        <p>
+            前些天整理读书摘录，想找一个过去见过的概念，来回翻了几本纸质笔记，最终还是在线上找到了。那种感觉就像在熟悉的街区里拐进一条小巷——明明知道它就在那里，但每次路径都不太一样。后来我把这类搜索、对照、再输出的过程，戏称为自己的「开云时刻」。
+        </p>
+
+        <p>
+            所谓开云，对我而言并不是什么宏大叙事，更像是日常里一次清晰的抬头：把模糊的描述落地为确切的词条，把零散的观点拼成可延伸的线索。比如读到一段关于“慢变量”的论述，顺手去查原始出处，再关联几篇延伸分析，最后在文档里写下一段对照笔记。整个过程没有什么仪式感，但结束时会觉得思路通透了不少。
+        </p>
+
+        <h2>查证·对照·延伸</h2>
+        <p>
+            我通常会在三个环节用到 <a href="https://kai-of-yun.com" class="inline-link">开云</a>：首先是对某个说法存疑时，快速查一下语境和来源；其次是整理笔记阶段，把摘录的内容和原文做比对，找出自己理解上的偏差；最后是延伸阅读——顺着一个概念往外走两步，看看有没有其他领域的类似思路。大部分时候只花十分钟，但积累下来的对照记录，已经成了我写东西时最常用的素材库。
+        </p>
+
+        <div class="quote-tip">
+            <strong>✎ 一个值得试试的做法：</strong> 下次读到一段让你“啊，原来如此”的文字，别急着划线，先花三分钟去查一下这段话的原始语境，然后用自己的话重写一遍。你会发现，理解深度完全不一样。
+        </div>
+
+        <p>
+            当然，不是每次查询都有明确目的。有时候只是单纯想确认一个名词的译法，或者看某句话在不同文章里被引用的方式是否走样。这种看似散漫的对照，反而经常带来意外收获——比如发现两个不相干的领域用了同一个比喻，或者意识到某个流行观点其实来自一次误读。这些细小的发现拼在一起，就是自己的知识地图。
+        </p>
+
+        <h2>一些常见场景</h2>
+        <p>
+            · 写文章前，把关键论点的原文找出来，逐句核对，避免二手引用带来的偏差。<br>
+            · 读到陌生术语，先看它在原文里的定义，再找两篇不同角度的解读，形成自己的理解。<br>
+            · 整理文件夹时，把以前收藏的链接重新打开，对照当时的笔记，删掉过时的，补充新的关联。<br>
+            · 和朋友讨论某个话题前，快速过一遍相关记录，让自己心里有底。
+        </p>
+
+        <div class="faq-mini">
+            <span>怎么开始一次对照查询</span>
+            <span>延伸阅读到什么程度合适</span>
+            <span>如何避免信息过载</span>
+            <span>笔记应该记多详细</span>
+        </div>
+
+        <p>
+            上面这几个问题是大家平时问得比较多的。其实答案很朴素：从一个小点开始，别贪多，做完一次就记下来。至于记录方式，自己看得懂就行，不必追求格式完美。关键是让下一次查询有迹可循。
+        </p>
+
+        <div class="visit-sentence">
+            → 如果你也有类似的习惯，不妨试试在 <a href="https://kai-of-yun.com" class="link-btn">开云</a> 里开启一次对照。
+        </div>
+
+        <div class="footer-note">
+            · 日常查询 · 对照笔记 · 延伸阅读 ·
+        </div>
+    </div>
+</body>
+</html>
